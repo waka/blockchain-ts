@@ -29,9 +29,9 @@ export class Blockchain {
     /**
      * 新しいブロックを作り、チェーンに追加する.
      */
-    public createBlock(proof: number, previousHash: string): Block {
+    public createBlock(proof: number, previousHash?: string): Block {
         if (!previousHash) {
-            previousHash = this.getLastBlock().getPreviousHash();
+            previousHash = blockHash(this.getLastBlock());
         }
         const block = new Block(this.chain.length + 1, this.currentTransactions, proof, previousHash);
         this.chain.push(block);

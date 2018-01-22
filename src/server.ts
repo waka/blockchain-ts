@@ -30,7 +30,7 @@ get("/mine", (res: http.ServerResponse): void => {
     const proof = blockchain.proofOfWork(lastBlock.getProof());
 
     blockchain.createTransaction("", nodeIdentifier, 1);
-    const block = blockchain.createBlock(proof, lastBlock.getPreviousHash());
+    const block = blockchain.createBlock(proof);
 
     const json = {
         index: block.getIndex(),
